@@ -1,19 +1,24 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #0d47a1;
+    color: #ffffff;
 }
 
 header {
-    background: #35424a;
+    background: #1976d2;
     color: #ffffff;
-    padding: 10px 0;
+    padding: 5px 0;
     text-align: center;
+    position:relative;
+    top: 0;
+    z-index: 1000;
 }
 
 h1 {
     margin: 0;
+    font-size: 2.5em;
 }
 
 nav {
@@ -24,10 +29,11 @@ nav a {
     color: #ffffff;
     text-decoration: none;
     padding: 10px 15px;
+    transition: background 0.3s ease;
 }
 
 nav a:hover {
-    background: #e8491d;
+    background: #1565c0;
 }
 
 .container {
@@ -36,12 +42,82 @@ nav a:hover {
     overflow: hidden;
 }
 
+#hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: #0d47a1;
+    animation: float 6s ease-in-out infinite;
+}
+
+#hero h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+#hero button {
+    background: #1976d2;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#hero button:hover {
+    background: #1565c0;
+}
+
+#features, #about, #extra {
+    padding: 50px 20px;
+    background: #ffffff;
+    color: #0d47a1;
+    text-align: center;
+}
+
+.feature, .extra-content {
+    margin: 20px 0;
+}
+
 footer {
     text-align: center;
-    padding: 10px 0;
-    background: #35424a;
+    padding: 20px 0;
+    background: #1976d2;
     color: #ffffff;
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+#video-connect {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #1976d2;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}
+
+#video-connect:hover {
+    background: #1565c0;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
 }

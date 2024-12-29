@@ -1,8 +1,8 @@
 # README.md
 
-# Basic Website
+# Conektbrains
 
-This project is a basic website template that includes essential files for creating a simple web application.
+This project is a funky landing page template for a video chat platform aimed at college and university students.
 
 ## Project Structure
 
@@ -36,7 +36,12 @@ basic-website
    npm install
    ```
 
-4. Open `src/index.html` in your browser to view the website.
+4. Start the development server:
+   ```
+   npm start
+   ```
+
+5. Open `src/index.html` in your browser to view the website.
 
 ## Contributing
 
