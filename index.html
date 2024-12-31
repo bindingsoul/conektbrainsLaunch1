@@ -3,191 +3,586 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conektbrains - Connect, Network, Grow</title>
+    <title>Graph Algorithm Visualizer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #001f3f;
-            --secondary-color: #ffffff;
-            --accent-color: #007bff;
-            --background-gradient: linear-gradient(135deg, #001f3f, #0056b3);
+            --primary: #2a2a72;
+            --secondary: #009ffd;
+            --background: #1a1a2e;
+            --text: #ffffff;
+            --node-color: #4a90e2;
+            --edge-color: #666666;
+            --highlight: #ff6b6b;
+            --visited: #42b883;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
         }
 
         body {
-            margin: 0;
-            font-family: "Roboto", Arial, sans-serif;
-            color: var(--secondary-color);
-            background: var(--background-gradient);
-            background-attachment: fixed;
+            background: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            transition: all 0.3s ease;
         }
 
-        header {
-            background-color: rgba(0, 31, 63, 0.9);
+        .sidebar {
+            background: rgba(255, 255, 255, 0.05);
             padding: 20px;
-            text-align: center;
-            font-size: 2.5em;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100vh;
+            overflow-y: auto;
         }
 
-        header span {
-            color: var(--accent-color);
+        .main-content {
+            padding: 20px;
+            position: relative;
         }
 
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            animation: fadeIn 1.5s ease-in-out;
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.5em;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            background-color: var(--accent-color);
-            border: none;
-            color: var(--secondary-color);
-            padding: 15px 40px;
-            font-size: 1.3em;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .features {
+        .controls {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 40px 20px;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .feature-card {
-            background: rgba(0, 123, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            flex: 1;
-            min-width: 250px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .feature-card h2 {
-            margin-bottom: 15px;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 31, 63, 0.9);
-            font-size: 0.9em;
-            margin-top: 40px;
-        }
-
-        .footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .chat-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--accent-color);
-            color: var(--secondary-color);
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 2em;
+        select, button, input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select:hover, button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 40px);
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            display: none;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .speed-control {
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.3s;
+            gap: 1rem;
+            margin: 1rem 0;
         }
 
-        .chat-button:hover {
-            background-color: #0056b3;
-            transform: scale(1.2);
+        .speed-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+
+        .speed-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--secondary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .algorithm-info {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
+            body {
+                grid-template-columns: 1fr;
             }
 
-            .hero p {
-                font-size: 1.2em;
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -300px;
+                z-index: 1000;
+                transition: left 0.3s ease;
             }
 
-            .feature-card {
-                min-width: 100%;
+            .sidebar.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                position: fixed;
+                top: 1rem;
+                left: 1rem;
+                z-index: 1001;
+                background: var(--primary);
+                border: none;
+                padding: 0.5rem;
+                border-radius: 4px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        Welcome to <span>Conektbrains</span>
-    </header>
-    
-    <div class="hero">
-        <h1>Connect with like-minded students</h1>
-        <p>Make verified connections, find potential co-founders, and grow your network with AI-powered matchmaking.</p>
-        <button class="cta-button">Join Now</button>
+    <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar">
+        <h1>Graph Algorithms</h1>
+        
+        <div class="controls">
+            <select id="algorithm-select">
+                <option value="bfs">Breadth-First Search</option>
+                <option value="dfs">Depth-First Search</option>
+                <option value="dijkstra">Dijkstra's Algorithm</option>
+                <option value="astar">A* Search</option>
+                <option value="prim">Prim's MST</option>
+                <option value="kruskal">Kruskal's MST</option>
+                <option value="bellmanford">Bellman-Ford</option>
+                <option value="floydwarshall">Floyd-Warshall</option>
+                <option value="topological">Topological Sort</option>
+            </select>
+
+            <div class="graph-controls">
+                <input type="number" id="nodes-input" placeholder="Number of nodes" min="2" max="50" value="10">
+                <button id="generate-graph">Generate Random Graph</button>
+                <button id="clear-graph">Clear Graph</button>
+            </div>
+
+            <div class="algorithm-controls">
+                <button id="start">Start</button>
+                <button id="pause">Pause</button>
+                <button id="step">Next Step</button>
+                <button id="reset">Reset</button>
+            </div>
+
+            <div class="speed-control">
+                <span>Speed:</span>
+                <input type="range" class="speed-slider" min="1" max="5" value="3">
+            </div>
+
+            <div class="visualization-controls">
+                <button id="download">Download View</button>
+                <button id="toggle-direction">Toggle Directed</button>
+            </div>
+
+            <div class="algorithm-info">
+                <h3>Algorithm Details</h3>
+                <p id="current-step">Select an algorithm to begin...</p>
+            </div>
+        </div>
     </div>
 
-    <div class="features">
-        <div class="feature-card">
-            <h2>AI Matchmaking</h2>
-            <p>Find peers with similar interests instantly.</p>
+    <main class="main-content">
+        <div class="canvas-container">
+            <canvas id="graph-canvas"></canvas>
         </div>
-        <div class="feature-card">
-            <h2>Verified Profiles</h2>
-            <p>Connect safely with real students.</p>
-        </div>
-        <div class="feature-card">
-            <h2>Video Calls</h2>
-            <p>Engage in meaningful conversations.</p>
-        </div>
-    </div>
+        <div class="tooltip"></div>
+    </main>
 
-    <div class="footer">
-        &copy; 2024 Conektbrains. All rights reserved. <br>
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Us</a>
-    </div>
+    <script>
+        class Graph {
+            constructor() {
+                this.nodes = new Map();
+                this.edges = new Map();
+                this.directed = false;
+            }
 
-    <button class="chat-button">💬</button>
+            addNode(id, x, y) {
+                this.nodes.set(id, { id, x, y, neighbors: new Set() });
+            }
+
+            addEdge(from, to, weight = 1) {
+                const edgeId = `${from}-${to}`;
+                this.edges.set(edgeId, { from, to, weight });
+                this.nodes.get(from).neighbors.add(to);
+                if (!this.directed) {
+                    this.nodes.get(to).neighbors.add(from);
+                }
+            }
+
+            removeNode(id) {
+                this.nodes.delete(id);
+                for (const [edgeId, edge] of this.edges.entries()) {
+                    if (edge.from === id || edge.to === id) {
+                        this.edges.delete(edgeId);
+                    }
+                }
+            }
+
+            clear() {
+                this.nodes.clear();
+                this.edges.clear();
+            }
+        }
+
+        class GraphVisualizer {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.graph = new Graph();
+                this.selectedAlgorithm = null;
+                this.animationSpeed = 3;
+                this.isPlaying = false;
+                this.currentStep = 0;
+                
+                this.resizeCanvas();
+                this.setupEventListeners();
+                this.setupAlgorithms();
+            }
+
+            resizeCanvas() {
+                const container = this.canvas.parentElement;
+                this.canvas.width = container.clientWidth;
+                this.canvas.height = container.clientHeight;
+            }
+
+            setupEventListeners() {
+                window.addEventListener('resize', () => this.resizeCanvas());
+                
+                document.getElementById('algorithm-select').addEventListener('change', (e) => {
+                    this.selectedAlgorithm = e.target.value;
+                    this.reset();
+                });
+
+                document.getElementById('generate-graph').addEventListener('click', () => {
+                    const nodeCount = parseInt(document.getElementById('nodes-input').value);
+                    this.generateRandomGraph(nodeCount);
+                });
+
+                document.getElementById('start').addEventListener('click', () => this.start());
+                document.getElementById('pause').addEventListener('click', () => this.pause());
+                document.getElementById('step').addEventListener('click', () => this.step());
+                document.getElementById('reset').addEventListener('click', () => this.reset());
+                document.getElementById('clear-graph').addEventListener('click', () => this.clear());
+                document.getElementById('download').addEventListener('click', () => this.downloadView());
+                document.getElementById('toggle-direction').addEventListener('click', () => this.toggleDirection());
+
+                document.querySelector('.speed-slider').addEventListener('input', (e) => {
+                    this.animationSpeed = parseInt(e.target.value);
+                });
+
+                document.querySelector('.menu-toggle').addEventListener('click', () => {
+                    document.querySelector('.sidebar').classList.toggle('active');
+                });
+            }
+
+            setupAlgorithms() {
+                this.algorithms = {
+                    bfs: this.bfs.bind(this),
+                    dfs: this.dfs.bind(this),
+                    dijkstra: this.dijkstra.bind(this),
+                    astar: this.astar.bind(this),
+                    prim: this.prim.bind(this),
+                    kruskal: this.kruskal.bind(this),
+                    bellmanford: this.bellmanford.bind(this),
+                    floydwarshall: this.floydwarshall.bind(this),
+                    topological: this.topologicalSort.bind(this)
+                };
+            }
+
+            generateRandomGraph(nodeCount) {
+                this.graph.clear();
+                
+                // Generate nodes in a circular layout
+                for (let i = 0; i < nodeCount; i++) {
+                    const angle = (2 * Math.PI * i) / nodeCount;
+                    const radius = Math.min(this.canvas.width, this.canvas.height) * 0.35;
+                    const x = this.canvas.width/2 + radius * Math.cos(angle);
+                    const y = this.canvas.height/2 + radius * Math.sin(angle);
+                    this.graph.addNode(i, x, y);
+                }
+
+                // Generate random edges
+                for (let i = 0; i < nodeCount; i++) {
+                    const edgeCount = Math.floor(Math.random() * 3) + 1;
+                    for (let j = 0; j < edgeCount; j++) {
+                        const to = Math.floor(Math.random() * nodeCount);
+                        if (to !== i) {
+                            const weight = Math.floor(Math.random() * 9) + 1;
+                            this.graph.addEdge(i, to, weight);
+                        }
+                    }
+                }
+
+                this.draw();
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Draw edges
+                for (const edge of this.graph.edges.values()) {
+                    const fromNode = this.graph.nodes.get(edge.from);
+                    const toNode = this.graph.nodes.get(edge.to);
+                    
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(fromNode.x, fromNode.y);
+                    this.ctx.lineTo(toNode.x, toNode.y);
+                    this.ctx.strokeStyle = edge.highlighted ? '#ff6b6b' : '#666666';
+                    this.ctx.lineWidth = edge.highlighted ? 3 : 2;
+                    this.ctx.stroke();
+
+                    if (this.graph.directed) {
+                        this.drawArrow(fromNode.x, fromNode.y, toNode.x, toNode.y);
+                    }
+
+                    // Draw weight
+                    const midX = (fromNode.x + toNode.x) / 2;
+                    const midY = (fromNode.y + toNode.y) / 2;
+                    this.ctx.fillStyle = '#ffffff';
+                    this.ctx.font = '12px Arial';
+                    this.ctx.fillText(edge.weight, midX, midY);
+                }
+
+                // Draw nodes
+                for (const node of this.graph.nodes.values()) {
+                    this.ctx.beginPath();
+                    this.ctx.arc(node.x, node.y, 20, 0, 2 * Math.PI);
+                    this.ctx.fillStyle = node.highlighted ? '#ff6b6b' : 
+                                       node.visited ? '#42b883' : '#4a90e2';
+                    this.ctx.fill();
+                    
+                    this.ctx.fillStyle = '#ffffff';
+                    this.ctx.font = '14px Arial';
+                    this.ctx.textAlign = 'center';
+                    this.ctx.textBaseline = 'middle';
+                    this.ctx.fillText(node.id, node.x, node.y);
+                }
+            }
+
+            drawArrow(fromX, fromY, toX, toY) {
+                const angle = Math.atan2(toY - fromY, toX - fromX);
+                const length = 15;
+                const width = 8;
+
+                this.ctx.beginPath();
+                this.ctx.moveTo(toX - length * Math.cos(angle), toY - length * Math.sin(angle));
+                this.ctx.lineTo(
+                    toX - length * Math.cos(angle) + width * Math.sin(angle),
+                    toY - length * Math.sin(angle) - width * Math.cos(angle)
+                );
+                this.ctx.lineTo(toX, toY);
+                this.ctx.lineTo(
+                    toX - length * Math.cos(angle) - width * Math.sin(angle),
+                    toY - length * Math.sin(angle) + width * Math.cos(angle)
+                );
+                this.ctx.closePath();
+                this.ctx.fillStyle = '#666666';
+                this.ctx.fill();
+            }
+
+            // Algorithm implementations
+            *bfs(startNode = 0) {
+                const queue = [startNode];
+                const visited = new Set([startNode]);
+                
+                while (queue.length > 0) {
+                    const current = queue.shift();
+                    this.graph.nodes.get(current).highlighted = true;
+                    yield `Visiting node ${current}`;
+                    
+                    for (const neighbor of this.graph.nodes.get(current).neighbors) {
+                        if (!visited.has(neighbor)) {
+                            queue.push(neighbor);
+                            visited.add(neighbor);
+                            this.graph.nodes.get(neighbor).visited = true;
+                            yield `Adding node ${neighbor} to queue`;
+                        }
+                    }
+                    
+                    this.graph.nodes.get(current).highlighted = false;
+                }
+            }
+
+            *dfs(startNode = 0) {
+                const stack = [startNode];
+                const visited = new Set();
+
+                while (stack.length > 0) {
+                    const current = stack.pop();
+                    if (visited.has(current)) continue;
+
+                    visited.add(current);
+                    this.graph.nodes.get(current).highlighted = true;
+                    yield `Visiting node ${current}`;
+
+                    for (const neighbor of Array.from(this.graph.nodes.get(current).neighbors).reverse()) {
+                        if (!visited.has(neighbor)) {
+                            stack.push(neighbor);
+                            this.graph.nodes.get(neighbor).visited = true;
+                            yield `Adding node ${neighbor} to stack`;
+                        }
+                    }
+
+                    this.graph.nodes.get(current).highlighted = false;
+                }
+            }
+
+            *dijkstra(startNode = 0) {
+                const distances = new Map();
+                const previous = new Map();
+                const unvisited = new Set();
+
+                // Initialize distances
+                for (const [id] of this.graph.nodes) {
+                    distances.set(id, id === startNode ? 0 : Infinity);
+                    unvisited.add(id);
+                }
+
+                while (unvisited.size > 0) {
+                    // Find minimum distance node
+                    let current = null;
+                    let minDistance = Infinity;
+                    for (const node of unvisited) {
+                        if (distances.get(node) < minDistance) {
+                            minDistance = distances.get(node);
+                            current = node;
+                        }
+                    }
+
+                    if (current === null) break;
+
+                    this.graph.nodes.get(current).highlighted = true;
+                    yield `Processing node ${current} with distance ${minDistance}`;
+
+                    unvisited.delete(current);
+
+                    // Update neighbors
+                    for (const neighbor of this.graph.nodes.get(current).neighbors) {
+                        if (unvisited.has(neighbor)) {
+                            const edgeWeight = this.graph.edges.get(`${current}-${neighbor}`)?.weight || 
+                                             this.graph.edges.get(`${neighbor}-${current}`)?.weight || 
+                                             Infinity;
+                            const newDistance = distances.get(current) + edgeWeight;
+
+                            if (newDistance < distances.get(neighbor)) {
+                                distances.set(neighbor, newDistance);
+                                previous.set(neighbor, current);
+                                yield `Updated distance to node ${neighbor}: ${newDistance}`;
+                            }
+                        }
+                    }
+
+                    this.graph.nodes.get(current).highlighted = false;
+                    this.graph.nodes.get(current).visited = true;
+                }
+            }
+
+            // Animation control methods
+            start() {
+                if (!this.selectedAlgorithm || !this.algorithms[this.selectedAlgorithm]) return;
+                
+                if (!this.generator) {
+                    this.generator = this.algorithms[this.selectedAlgorithm]();
+                }
+                
+                this.isPlaying = true;
+                this.animate();
+            }
+
+            pause() {
+                this.isPlaying = false;
+            }
+
+            step() {
+                if (!this.generator) {
+                    this.generator = this.algorithms[this.selectedAlgorithm]();
+                }
+                
+                const result = this.generator.next();
+                if (!result.done) {
+                    document.getElementById('current-step').textContent = result.value;
+                    this.draw();
+                }
+            }
+
+            animate() {
+                if (!this.isPlaying) return;
+
+                const result = this.generator.next();
+                if (!result.done) {
+                    document.getElementById('current-step').textContent = result.value;
+                    this.draw();
+                    setTimeout(() => this.animate(), 1000 / this.animationSpeed);
+                } else {
+                    this.isPlaying = false;
+                }
+            }
+
+            reset() {
+                this.generator = null;
+                this.isPlaying = false;
+                for (const node of this.graph.nodes.values()) {
+                    node.highlighted = false;
+                    node.visited = false;
+                }
+                document.getElementById('current-step').textContent = 'Select an algorithm to begin...';
+                this.draw();
+            }
+
+            clear() {
+                this.graph.clear();
+                this.reset();
+            }
+
+            toggleDirection() {
+                this.graph.directed = !this.graph.directed;
+                this.draw();
+            }
+
+            downloadView() {
+                const dataUrl = this.canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.download = 'graph-visualization.png';
+                link.href = dataUrl;
+                link.click();
+            }
+        }
+
+        // Initialize the visualizer when the page loads
+        window.addEventListener('load', () => {
+            const visualizer = new GraphVisualizer('graph-canvas');
+            visualizer.generateRandomGraph(10);
+        });
+    </script>
 </body>
 </html>
