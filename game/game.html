@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Reflex Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="timer-container">
+                <div class="timer-ring">
+                    <svg>
+                        <circle cx="40" cy="40" r="35"></circle>
+                        <circle cx="40" cy="40" r="35" class="progress"></circle>
+                    </svg>
+                    <div class="timer-value">
+                        <span id="timer">30</span>
+                        <span class="timer-unit">s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="combo">Combo: <span id="combo">0</span>x</div>
+            <button id="sound-toggle" class="icon-button">
+                <i class="fas fa-volume-up"></i>
+            </button>
+        </div>
+        
+        <div id="game-area">
+            <div id="start-screen" class="screen">
+                <h1 class="game-title">Premium Challenge</h1>
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="normal">Classic Mode</button>
+                    <button class="mode-btn" data-mode="endurance">Elite Mode</button>
+                </div>
+                <button id="start-btn" class="glow-button">Begin Challenge</button>
+            </div>
+            
+            <div id="game-screen" class="screen hidden">
+                <div class="particle-container"></div>
+            </div>
+            
+            <div id="end-screen" class="screen hidden">
+                <h2 class="end-title">Game Over!</h2>
+                <div class="final-score">
+                    <span id="final-score">0</span>
+                    <p>Points</p>
+                </div>
+                <button id="restart-btn" class="glow-button">Play Again</button>
+                <button id="leaderboard-btn" class="outlined-button">
+                    <i class="fas fa-trophy"></i> Leaderboard
+                </button>
+            </div>
+        </div>
+        
+        <div class="leaderboard">
+            <h3><i class="fas fa-crown"></i> Elite Rankings</h3>
+            <ol id="high-scores"></ol>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

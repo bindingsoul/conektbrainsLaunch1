@@ -1,0 +1,293 @@
+:root {
+    --bmw-blue: #1F3A51;
+    --bmw-white: #F1F1F1;
+    --bmw-gray: #A7A9B3;
+    --bmw-light: #F0F0F0;
+    --bmw-dark: #3C3E43;
+    --glass-bg: rgba(31, 58, 81, 0.9);
+    --bmw-gradient: linear-gradient(135deg, #1F3A51, #3C3E43);
+    --shadow-color: rgba(31, 58, 81, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bmw-blue), var(--bmw-dark));
+    color: var(--text-light);
+    font-family: 'Playfair Display', serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    max-width: 1200px;
+    width: 90%;
+    height: 80vh;
+    background: var(--glass-bg);
+    border-radius: 20px;
+    box-shadow: 0 0 50px var(--shadow-color);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--bmw-gray);
+    position: relative;
+}
+
+.game-header {
+    background: linear-gradient(to right, var(--bmw-dark), var(--bmw-blue));
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    border-bottom: 2px solid var(--bmw-gray);
+}
+
+.timer-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.timer-ring {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.timer-ring svg {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
+}
+
+.timer-ring circle {
+    fill: none;
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.timer-ring circle:first-child {
+    stroke: rgba(255, 255, 255, 0.1);
+}
+
+.timer-ring circle.progress {
+    stroke: var(--bmw-gray);
+    stroke-dasharray: 220;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.1s linear, stroke 0.3s ease;
+}
+
+.timer-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    text-decoration-color: #F1F1F1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.timer-value #timer {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.timer-value .timer-unit {
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+.game-title {
+    font-size: 4.5em;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--bmw-white), var(--bmw-gray));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 10px var(--shadow-color);
+}
+
+#game-area {
+    width: 100%;
+    height: 500px;
+    background: var(--bmw-dark);
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 10px 10px;
+}
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.glow-button {
+    background: var(--bmw-gradient);
+    border: 1px solid var(--bmw-gray);
+    padding: 15px 40px;
+    font-size: 1.2em;
+    border-radius: 30px;
+    color: var(--bmw-white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.glow-button:hover {
+    background: linear-gradient(135deg, var(--bmw-blue), var(--bmw-dark));
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.game-object {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bmw-gradient);
+    cursor: pointer;
+    animation: pulse 1s infinite;
+    box-shadow: 0 0 30px var(--shadow-color);
+    transition: transform 0.2s ease;
+}
+
+.game-object:hover {
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes spawn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes despawn {
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.particle {
+    position: absolute;
+    pointer-events: none;
+    background: var(--premium-light);
+    border-radius: 50%;
+    animation: particle 0.6s ease-out forwards;
+}
+
+@keyframes particle {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.leaderboard {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--glass-bg);
+    border-radius: 10px;
+    border: 1px solid var(--bmw-gray);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#game-mode {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    background: #333;
+    color: white;
+    border: 1px solid #444;
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+    .game-container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .game-header {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .glow-button {
+        padding: 20px 40px;
+        font-size: 1.5em;
+    }
+}
+
+/* Add more premium styling */
+.score, .combo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+    color: var(--bmw-white);
+    text-shadow: 0 0 10px var(--shadow-color);
+}
+
+.end-title {
+    color: var(--gold);
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Update mode buttons */
+.mode-btn {
+    background: var(--bmw-dark);
+    color: var(--bmw-white);
+    border: 1px solid var(--bmw-gray);
+}
+
+.mode-btn.active {
+    background: var(--bmw-gradient);
+}
