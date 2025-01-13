@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Color Palettes</title>
+    <title>Design Resources Hub</title>
     <style>
         * {
             margin: 0;
@@ -124,21 +124,152 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-tab {
+            padding: 1rem 2rem;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab.active {
+            background: #333;
+            color: #fff;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .resource-card h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .resource-card ul {
+            list-style: none;
+        }
+
+        .resource-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-card a {
+            color: #1A73E8;
+            text-decoration: none;
+        }
+
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Tech Color Palettes</h1>
+        <h1>Design Resources Hub</h1>
+        <div class="nav-tabs">
+            <div class="nav-tab active" data-section="colors">Color Palettes</div>
+            <div class="nav-tab" data-section="typography">Typography</div>
+            <div class="nav-tab" data-section="tools">Tools</div>
+            <div class="nav-tab" data-section="tutorials">Tutorials</div>
+        </div>
+    </header>
+
+    <div class="section active" id="colors">
         <div class="categories">
             <button class="category-btn active" data-category="all">All</button>
             <button class="category-btn" data-category="modern">Modern</button>
             <button class="category-btn" data-category="dark">Dark Mode</button>
             <button class="category-btn" data-category="gradient">Gradient</button>
             <button class="category-btn" data-category="minimal">Minimal</button>
+            <button class="category-btn" data-category="nature">Nature</button>
+            <button class="category-btn" data-category="vintage">Vintage</button>
+            <button class="category-btn" data-category="neon">Neon</button>
+            <button class="category-btn" data-category="pastel">Pastel</button>
+            <button class="category-btn" data-category="brand">Brand</button>
+            <button class="category-btn" data-category="autumn">Autumn</button>
+            <button class="category-btn" data-category="winter">Winter</button>
         </div>
-    </header>
+        <div class="palettes-container" id="palettes"></div>
+    </div>
 
-    <div class="palettes-container" id="palettes"></div>
+    <div class="section" id="typography">
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>Google Fonts</h3>
+                <ul>
+                    <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
+                </ul>
+            </div>
+            <div class="resource-card">
+                <h3>Adobe Fonts</h3>
+                <ul>
+                    <li><a href="https://fonts.adobe.com/" target="_blank">Adobe Fonts</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="tools">
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>Figma</h3>
+                <ul>
+                    <li><a href="https://www.figma.com/" target="_blank">Figma</a></li>
+                </ul>
+            </div>
+            <div class="resource-card">
+                <h3>Sketch</h3>
+                <ul>
+                    <li><a href="https://www.sketch.com/" target="_blank">Sketch</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="tutorials">
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>Design Course</h3>
+                <ul>
+                    <li><a href="https://www.designcourse.com/" target="_blank">Design Course</a></li>
+                </ul>
+            </div>
+            <div class="resource-card">
+                <h3>Envato Tuts+</h3>
+                <ul>
+                    <li><a href="https://tutsplus.com/" target="_blank">Envato Tuts+</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="toast" id="toast">Color code copied!</div>
 
     <script>
@@ -153,6 +284,248 @@
                 category: "dark",
                 colors: ["#121212", "#1E1E1E", "#2D2D2D", "#454545", "#666666"]
             },
+            //dark is here
+            
+    {
+        name: "Midnight Blue",
+        category: "dark",
+        colors: ["#1D1F2C", "#0E1421", "#2A2E3D", "#1F2333", "#252A39"]
+    },
+    {
+        name: "Charcoal Grey",
+        category: "dark",
+        colors: ["#333333", "#2E2E2E", "#262626", "#1A1A1A", "#141414"]
+    },
+    {
+        name: "Dark Forest",
+        category: "dark",
+        colors: ["#263238", "#1B2A27", "#1D3330", "#102420", "#16221D"]
+    },
+    {
+        name: "Graphite",
+        category: "dark",
+        colors: ["#464646", "#3D3D3D", "#3B3B3B", "#313131", "#272727"]
+    },
+    {
+        name: "Deep Plum",
+        category: "dark",
+        colors: ["#4A2C4D", "#3F2240", "#5B3D63", "#42214D", "#3E1D45"]
+    },
+    {
+        name: "Coal",
+        category: "dark",
+        colors: ["#2F2F2F", "#4A4A4A", "#353535", "#2B2B2B", "#1F1F1F"]
+    },
+    {
+        name: "Dark Cyan",
+        category: "dark",
+        colors: ["#005D5B", "#003F3F", "#1B7472", "#1B4F4B", "#234C47"]
+    },
+    {
+        name: "Emerald Night",
+        category: "dark",
+        colors: ["#264E3B", "#1E3B2A", "#315F4D", "#254C3B", "#1C362A"]
+    },
+    {
+        name: "Steel Blue",
+        category: "dark",
+        colors: ["#1D3A5C", "#2A4B71", "#233C56", "#2F4E6F", "#1B354F"]
+    },
+    {
+        name: "Onyx",
+        category: "dark",
+        colors: ["#353535", "#2F2F2F", "#1A1A1A", "#252525", "#191919"]
+    },
+    {
+        name: "Sapphire Dark",
+        category: "dark",
+        colors: ["#0D1A2A", "#121F34", "#1A283C", "#102330", "#1C2A38"]
+    },
+    {
+        name: "Rusty Iron",
+        category: "dark",
+        colors: ["#9E4F3F", "#7C3C2C", "#6F3A28", "#4D2D1F", "#5C3B28"]
+    },
+    {
+        name: "Midnight Purple",
+        category: "dark",
+        colors: ["#2A1D3A", "#3F2749", "#5C3C69", "#4D2844", "#3C1F32"]
+    },
+    {
+        name: "Burgundy",
+        category: "dark",
+        colors: ["#2E0F25", "#420C31", "#6A1E3C", "#5A1632", "#4C1130"]
+    },
+    {
+        name: "Charcoal Green",
+        category: "dark",
+        colors: ["#3D4F45", "#30463E", "#4A5A4C", "#2E3D36", "#1F2A26"]
+    },
+    {
+        name: "Dark Teal",
+        category: "dark",
+        colors: ["#2A3C3D", "#263B3D", "#1D2E2E", "#1A3232", "#2A4342"]
+    },
+    {
+        name: "Obsidian",
+        category: "dark",
+        colors: ["#2E2E2E", "#1F1F1F", "#161616", "#111111", "#0F0F0F"]
+    },
+    {
+        name: "Ebony",
+        category: "dark",
+        colors: ["#2D2D2D", "#252525", "#1F1F1F", "#141414", "#0F0F0F"]
+    },
+    {
+        name: "Shadow Grey",
+        category: "dark",
+        colors: ["#3B3B3B", "#2C2C2C", "#292929", "#1F1F1F", "#171717"]
+    },
+    {
+        name: "Black Cherry",
+        category: "dark",
+        colors: ["#2C0A18", "#3A0D1B", "#5C1D2A", "#461C2C", "#38192C"]
+    },
+    {
+        name: "Midnight Green",
+        category: "dark",
+        colors: ["#003F3D", "#0A4B46", "#234E45", "#163B39", "#1D4A47"]
+    },
+    {
+        name: "Pine Forest",
+        category: "dark",
+        colors: ["#1D2F1B", "#2C3B2B", "#395B41", "#2A4933", "#1B3C2C"]
+    },
+    {
+        name: "Dark Sapphire",
+        category: "dark",
+        colors: ["#1E1A3C", "#0F1B3A", "#3B3E5B", "#2A3B4F", "#1F2A3D"]
+    },
+    {
+        name: "Deep Indigo",
+        category: "dark",
+        colors: ["#1D1F60", "#283B79", "#1F2C5A", "#1E2454", "#1B234C"]
+    },
+    {
+        name: "Jet Black",
+        category: "dark",
+        colors: ["#0A0A0A", "#161616", "#1F1F1F", "#2A2A2A", "#333333"]
+    },
+    {
+        name: "Black Olive",
+        category: "dark",
+        colors: ["#3B3A36", "#2E2C28", "#1D1C18", "#242322", "#1B1A17"]
+    },
+    {
+        name: "Cobalt Blue",
+        category: "dark",
+        colors: ["#1C1F6E", "#2B396A", "#1F2C54", "#3C4D6C", "#2D3B5C"]
+    },
+    {
+        name: "Purple Haze",
+        category: "dark",
+        colors: ["#4C2E7A", "#3E2463", "#5B367F", "#46265A", "#351C44"]
+    },
+    {
+        name: "Dark Charcoal",
+        category: "dark",
+        colors: ["#3B3B3B", "#323232", "#292929", "#252525", "#1F1F1F"]
+    },
+    {
+        name: "Burnt Black",
+        category: "dark",
+        colors: ["#2C2C2C", "#222222", "#1F1F1F", "#141414", "#0F0F0F"]
+    },
+    {
+        name: "Deep Crimson",
+        category: "dark",
+        colors: ["#5A0E2C", "#7D0F38", "#9E2049", "#8B153D", "#6A0C31"]
+    },
+    {
+        name: "Dark Walnut",
+        category: "dark",
+        colors: ["#3B2F26", "#2F251F", "#4A3B2D", "#3D2F23", "#2B2016"]
+    },
+    {
+        name: "Graphite Black",
+        category: "dark",
+        colors: ["#2B2B2B", "#1D1D1D", "#141414", "#0F0F0F", "#090909"]
+    },
+    {
+        name: "Midnight Red",
+        category: "dark",
+        colors: ["#3B0A0F", "#5C1419", "#7F1C23", "#A32030", "#A3282A"]
+    },
+    {
+        name: "Blackened Blue",
+        category: "dark",
+        colors: ["#111B26", "#2A3545", "#1F2B39", "#22313A", "#3A4C5B"]
+    },
+    {
+        name: "Crimson Night",
+        category: "dark",
+        colors: ["#3C0D20", "#6E1A33", "#9E2D4B", "#7B1F3B", "#661637"]
+    },
+    {
+        name: "Cavern Black",
+        category: "dark",
+        colors: ["#1B1B1B", "#2C2C2C", "#2D2D2D", "#323232", "#282828"]
+    },
+    {
+        name: "Slate Grey",
+        category: "dark",
+        colors: ["#505050", "#404040", "#3D3D3D", "#2C2C2C", "#262626"]
+    },
+    {
+        name: "Dark Taupe",
+        category: "dark",
+        colors: ["#6B5F4D", "#5E533E", "#4A432F", "#3D3724", "#322F1A"]
+    },
+    {
+        name: "Rusty Brown",
+        category: "dark",
+        colors: ["#4A2C1D", "#6C3A28", "#7D4A32", "#4E3D29", "#3B2F21"]
+    },
+    {
+        name: "Deep Forest Green",
+        category: "dark",
+        colors: ["#2A3E3D", "#1C2D2A", "#3A4C49", "#31443C", "#3C4A47"]
+    },
+    {
+        name: "Dark Cyan Blue",
+        category: "dark",
+        colors: ["#1F4D5C", "#2E5F6A", "#1C4B5A", "#2A3C49", "#253E4C"]
+    },
+    {
+        name: "Electric Purple",
+        category: "dark",
+        colors: ["#4A2C6C", "#5D3C8C", "#7A4D9B", "#6B3F8C", "#4E2772"]
+    },
+    {
+        name: "Stormy Grey",
+        category: "dark",
+        colors: ["#2E3535", "#3A4343", "#4A5353", "#2F3939", "#354545"]
+    },
+    {
+        name: "Faded Indigo",
+        category: "dark",
+        colors: ["#3F4D67", "#2E3D56", "#1D3049", "#2B3F5A", "#1A324D"]
+    },
+    {
+        name: "Burnt Plum",
+        category: "dark",
+        colors: ["#4A2E54", "#5A3D66", "#6F4A77", "#5B3A6D", "#4C2C59"]
+    },
+    {
+        name: "Amber Glow",
+        category: "dark",
+        colors: ["#9E7300", "#B47700", "#BB7C00", "#C18A00", "#D09500"]
+    },
+    {
+        name: "Pitch Black",
+        category: "dark",
+        colors: ["#000000", "#111111", "#2A2A2A", "#333333", "#1F1F1F"]
+    },
             {
                 name: "Gradient Fusion",
                 category: "gradient",
@@ -198,6 +571,242 @@
                 category: "gradient",
                 colors: ["#FF0080", "#FF00FF", "#8B00FF", "#5B00FF", "#2E00FF"]
             },
+
+//Neon is from here
+
+    {
+        name: "Neon Vibe",
+        category: "neon",
+        colors: ["#FF3F34", "#FF5F00", "#FF8C00", "#FFD700", "#32CD32"]
+    },
+    {
+        name: "Electric Glow",
+        category: "neon",
+        colors: ["#39FF14", "#FF073A", "#AA00FF", "#00FFFF", "#FF6EC7"]
+    },
+    {
+        name: "Neon Dreams",
+        category: "neon",
+        colors: ["#D500F9", "#FF1F7A", "#00B0FF", "#00E5FF", "#FFEA00"]
+    },
+    {
+        name: "Electric Pulse",
+        category: "neon",
+        colors: ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5"]
+    },
+    {
+        name: "Laser Lights",
+        category: "neon",
+        colors: ["#FF00FF", "#00FF00", "#FFFF00", "#FF0000", "#0000FF"]
+    },
+    {
+        name: "Neon Sky",
+        category: "neon",
+        colors: ["#32CD32", "#FF6347", "#FF4500", "#8A2BE2", "#00FA9A"]
+    },
+    {
+        name: "Vivid Glow",
+        category: "neon",
+        colors: ["#1BFF60", "#FC3C3C", "#F7F11A", "#D200D9", "#36E1FF"]
+    },
+    {
+        name: "Cyber Night",
+        category: "neon",
+        colors: ["#00FFEF", "#FF007F", "#FD7C6E", "#38FFB9", "#FFD100"]
+    },
+    {
+        name: "Laserbeam",
+        category: "neon",
+        colors: ["#FF5733", "#FFBD33", "#7AFF33", "#33FFD4", "#FF33A1"]
+    },
+    {
+        name: "Neon Heat",
+        category: "neon",
+        colors: ["#FF9B00", "#FF3333", "#FF0066", "#FF3399", "#CC33FF"]
+    },
+    {
+        name: "Digital Glow",
+        category: "neon",
+        colors: ["#FF00FF", "#00FFFF", "#00FF00", "#FFFF00", "#FF6600"]
+    },
+    {
+        name: "Neon Prism",
+        category: "neon",
+        colors: ["#1C1C1C", "#FF00FF", "#00FF00", "#00FFFF", "#FFFF00"]
+    },
+    {
+        name: "Electric Burst",
+        category: "neon",
+        colors: ["#FFFF00", "#FF00FF", "#00FF00", "#00FFFF", "#FF0000"]
+    },
+    {
+        name: "Glowing Horizon",
+        category: "neon",
+        colors: ["#DA70D6", "#FF7F50", "#FF1493", "#FF6347", "#FFD700"]
+    },
+    {
+        name: "Neon Jungle",
+        category: "neon",
+        colors: ["#32CD32", "#FF0000", "#FF00FF", "#FFD700", "#00FFFF"]
+    },
+    {
+        name: "Electric Rose",
+        category: "neon",
+        colors: ["#FF1493", "#FF69B4", "#FF007F", "#C71585", "#FF00FF"]
+    },
+    {
+        name: "Neon Lights",
+        category: "neon",
+        colors: ["#FF00FF", "#FFFF00", "#00FFFF", "#00FF00", "#FF0000"]
+    },
+    {
+        name: "Neon Fever",
+        category: "neon",
+        colors: ["#FF5733", "#FF6347", "#FF0000", "#F5FF00", "#A1FF00"]
+    },
+    {
+        name: "Bright Night",
+        category: "neon",
+        colors: ["#00FF00", "#FFFF00", "#FF4500", "#FF1493", "#00FFFF"]
+    },
+    {
+        name: "Cosmic Glow",
+        category: "neon",
+        colors: ["#00FFFF", "#FF00FF", "#FF1493", "#FF6347", "#FFD700"]
+    },
+    {
+        name: "Neon Swirl",
+        category: "neon",
+        colors: ["#00FF00", "#FF00FF", "#FF6347", "#FFD700", "#00FFFF"]
+    },
+    {
+        name: "Vivid Pulse",
+        category: "neon",
+        colors: ["#FF00FF", "#FFFF00", "#FF4500", "#32CD32", "#00FFFF"]
+    },
+    {
+        name: "Laser Pink",
+        category: "neon",
+        colors: ["#FF1493", "#FF6EC7", "#FF007F", "#FF33FF", "#D500F9"]
+    },
+    {
+        name: "Neon Radiance",
+        category: "neon",
+        colors: ["#FF9B00", "#FF6A00", "#FF0000", "#FF33FF", "#00B0FF"]
+    },
+    {
+        name: "Ultra Violet",
+        category: "neon",
+        colors: ["#9B00FF", "#6A0DAD", "#F06292", "#D500F9", "#8C1A87"]
+    },
+    {
+        name: "Hyper Glow",
+        category: "neon",
+        colors: ["#FF3F34", "#F59C42", "#56D82C", "#47F2F0", "#AC65FF"]
+    },
+    {
+        name: "Neon Soul",
+        category: "neon",
+        colors: ["#FFFF00", "#FF1493", "#00FF00", "#00FFFF", "#FF6347"]
+    },
+    {
+        name: "Electric Pulse",
+        category: "neon",
+        colors: ["#F50057", "#00FF83", "#0069FF", "#9C00FF", "#FF9800"]
+    },
+    {
+        name: "Neon Ember",
+        category: "neon",
+        colors: ["#FF5733", "#FF8D1A", "#FF5722", "#FF9800", "#FFFF00"]
+    },
+    {
+        name: "Pulsing Lights",
+        category: "neon",
+        colors: ["#FFCC00", "#FF00FF", "#FF5500", "#CC00FF", "#66FF33"]
+    },
+    {
+        name: "Neon Inferno",
+        category: "neon",
+        colors: ["#FF4500", "#FF6347", "#FF0000", "#FF007F", "#FF00FF"]
+    },
+    {
+        name: "Electric Fantasy",
+        category: "neon",
+        colors: ["#39FF14", "#FF6EC7", "#FF33FF", "#B400C7", "#FFFF00"]
+    },
+    {
+        name: "Neon Lush",
+        category: "neon",
+        colors: ["#00FF00", "#FF4500", "#FFFF00", "#FF007F", "#00FFFF"]
+    },
+    {
+        name: "Cybernetic Glow",
+        category: "neon",
+        colors: ["#00FFFF", "#00FF00", "#FF00FF", "#FFD700", "#FF007F"]
+    },
+    {
+        name: "Bright Sparks",
+        category: "neon",
+        colors: ["#FF00FF", "#39FF14", "#00FFFF", "#FF6347", "#32CD32"]
+    },
+    {
+        name: "Electric Horizon",
+        category: "neon",
+        colors: ["#FF007F", "#FF0000", "#FF4500", "#FF6EC7", "#FFFF00"]
+    },
+    {
+        name: "Neon Flash",
+        category: "neon",
+        colors: ["#FF5C5C", "#FFED00", "#32CD32", "#00FFFF", "#9C27B0"]
+    },
+    {
+        name: "Glowing Aura",
+        category: "neon",
+        colors: ["#00FFFF", "#FF6347", "#FF9B00", "#FF0066", "#00FF00"]
+    },
+    {
+        name: "Neon Mist",
+        category: "neon",
+        colors: ["#9C27B0", "#FF1493", "#00FFFF", "#FF6347", "#FFFF00"]
+    },
+    {
+        name: "Luminous Glow",
+        category: "neon",
+        colors: ["#FF00FF", "#F50057", "#FFFF00", "#39FF14", "#32CD32"]
+    },
+    {
+        name: "Bright Burst",
+        category: "neon",
+        colors: ["#FF5733", "#FF6EC7", "#FF007F", "#FFFF00", "#00FFFF"]
+    },
+    {
+        name: "Neon Tides",
+        category: "neon",
+        colors: ["#39FF14", "#00FFFF", "#FF007F", "#FF0000", "#FF9B00"]
+    },
+    {
+        name: "Electric Rush",
+        category: "neon",
+        colors: ["#FF9B00", "#FF5733", "#FF1493", "#F50057", "#FFFF00"]
+    },
+    {
+        name: "Vivid Fusion",
+        category: "neon",
+        colors: ["#FF007F", "#FF0000", "#00FFFF", "#FF6347", "#FFFF00"]
+    },
+    {
+        name: "Neon Pulse",
+        category: "neon",
+        colors: ["#FF00FF", "#32CD32", "#FF6347", "#FFFF00", "#00FFFF"]
+    },
+    {
+        name: "Cyber Glow",
+        category: "neon",
+        colors: ["#FF00FF", "#00FF00", "#FFFF00", "#FF6347", "#FF5733"]
+    },
+
+
+
             {
                 name: "Arctic Mint",
                 category: "modern",
@@ -292,7 +901,1021 @@
                 name: "Solar Flare",
                 category: "gradient",
                 colors: ["#DC2626", "#EF4444", "#F87171", "#FCA5A5", "#FECACA"]
+            },
+            // Nature Palettes
+            {
+                name: "Forest Dawn",
+                category: "nature",
+                colors: ["#2D5A27", "#4A8F40", "#90B77D", "#C5D8A4", "#F2E8CF"]
+            },
+            {
+                name: "Ocean Depths",
+                category: "nature",
+                colors: ["#05445E", "#189AB4", "#75E6DA", "#D4F1F4", "#F8FBFB"]
+            },
+            {
+                name: "Autumn Leaves",
+                category: "autumn",
+                colors: ["#9D2503", "#D44000", "#FF7A00", "#FFA559", "#FFD6A5"]
+            },
+            {
+                name: "Winter Frost",
+                category: "winter",
+                colors: ["#CDDAFD", "#DFE7FD", "#FFFFFF", "#EDF2FB", "#E2EAFC"]
+            },
+            {
+                name: "Vintage Rose",
+                category: "vintage",
+                colors: ["#894E4D", "#B47774", "#D4A59A", "#F3E0DC", "#FFF1ED"]
+            },
+
+
+
+            //vintage is here
+            
+    {
+        name: "Antique Gold",
+        category: "vintage",
+        colors: ["#D7A15C", "#B46B3A", "#9F4E27", "#7F4622", "#C8A15A"]
+    },
+    {
+        name: "Sepia Tones",
+        category: "vintage",
+        colors: ["#C3B091", "#9E8C6D", "#C0A47A", "#8B6E4F", "#6B4D3D"]
+    },
+    {
+        name: "Faded Denim",
+        category: "vintage",
+        colors: ["#A7B4D2", "#839AB3", "#5A6C88", "#4F5C76", "#3F4958"]
+    },
+    {
+        name: "Burnt Sienna",
+        category: "vintage",
+        colors: ["#9C5E4B", "#6E3F31", "#8A4E3B", "#5B2E21", "#3E1F14"]
+    },
+    {
+        name: "Old Rose",
+        category: "vintage",
+        colors: ["#E4A6A1", "#D88B8B", "#B76C6C", "#9C4C4C", "#774D4D"]
+    },
+    {
+        name: "Mustard Field",
+        category: "vintage",
+        colors: ["#E1B400", "#C8A300", "#9A7A00", "#6F5200", "#4C3F00"]
+    },
+    {
+        name: "Rustic Pine",
+        category: "vintage",
+        colors: ["#7D8F60", "#6E7D50", "#4F6239", "#4A5C3C", "#3B4730"]
+    },
+    {
+        name: "Vintage Teal",
+        category: "vintage",
+        colors: ["#4C7C7B", "#3D6B6A", "#2C5652", "#1C4A44", "#3C4F4F"]
+    },
+    {
+        name: "Earthy Clay",
+        category: "vintage",
+        colors: ["#B96533", "#A45B2B", "#8B4820", "#6F3D1A", "#532D13"]
+    },
+    {
+        name: "Soft Olive",
+        category: "vintage",
+        colors: ["#A7A77E", "#8F8F61", "#7D7D4C", "#5E5E3C", "#3B3B24"]
+    },
+    {
+        name: "Creamy Coffee",
+        category: "vintage",
+        colors: ["#C6A687", "#B5895A", "#8E6F39", "#6A4D2D", "#4C3D1A"]
+    },
+    {
+        name: "Timeless Taupe",
+        category: "vintage",
+        colors: ["#D1C0A1", "#B8A88B", "#A18A7D", "#6F5A47", "#4B3F2C"]
+    },
+    {
+        name: "Golden Amber",
+        category: "vintage",
+        colors: ["#E19D3D", "#D28B26", "#B87F1A", "#9A6D12", "#7E4E00"]
+    },
+    {
+        name: "Vintage Lavender",
+        category: "vintage",
+        colors: ["#D2B7D3", "#A793B6", "#8E6C9F", "#6D4A8A", "#4C3C6E"]
+    },
+    {
+        name: "Warm Cinnamon",
+        category: "vintage",
+        colors: ["#7E5C4E", "#9B704F", "#8A5C3F", "#6F4930", "#4E3422"]
+    },
+    {
+        name: "Antique Ivory",
+        category: "vintage",
+        colors: ["#F0E3C1", "#D1C7A1", "#A9A57D", "#8A7C55", "#6F6242"]
+    },
+    {
+        name: "Deep Burgundy",
+        category: "vintage",
+        colors: ["#6E1C34", "#7A2F49", "#9C3E5E", "#B84E6F", "#D66C86"]
+    },
+    {
+        name: "Vintage Mint",
+        category: "vintage",
+        colors: ["#A7C4C1", "#8FB8B3", "#7A9A9A", "#6E8181", "#4F6765"]
+    },
+    {
+        name: "Rusty Copper",
+        category: "vintage",
+        colors: ["#9E5D32", "#A66D39", "#A57A47", "#9F6B3D", "#8F4D27"]
+    },
+    {
+        name: "Pale Coral",
+        category: "vintage",
+        colors: ["#F3D0C1", "#D7A699", "#F1A6A1", "#E39C90", "#D48379"]
+    },
+    {
+        name: "Antique Green",
+        category: "vintage",
+        colors: ["#5B6B3A", "#4E5D33", "#374F2C", "#284322", "#21321C"]
+    },
+    {
+        name: "Pewter Grey",
+        category: "vintage",
+        colors: ["#6C6E6F", "#565757", "#4B4D4D", "#3F4141", "#363838"]
+    },
+    {
+        name: "Burnt Orange",
+        category: "vintage",
+        colors: ["#D47426", "#D87F3D", "#BF6029", "#A35521", "#7F4322"]
+    },
+    {
+        name: "Classic Burgundy",
+        category: "vintage",
+        colors: ["#A62F4E", "#B63B5D", "#8C2F44", "#762236", "#5C1C2C"]
+    },
+    {
+        name: "Pale Mustard",
+        category: "vintage",
+        colors: ["#D7D178", "#C4B54E", "#A89D39", "#8B842E", "#6F6A23"]
+    },
+    {
+        name: "Smoky Blue",
+        category: "vintage",
+        colors: ["#6E7F7B", "#5A6A66", "#4F5855", "#3C4744", "#313C38"]
+    },
+    {
+        name: "Tangerine Twist",
+        category: "vintage",
+        colors: ["#FF5E00", "#D54E00", "#E44E00", "#D23C1E", "#A83214"]
+    },
+    {
+        name: "Lavender Mist",
+        category: "vintage",
+        colors: ["#A28DC6", "#8D7EAD", "#6C6499", "#4F4F86", "#403A73"]
+    },
+    {
+        name: "Olive Drab",
+        category: "vintage",
+        colors: ["#6A7433", "#5C6829", "#4A5723", "#3A4A1E", "#2C3C1A"]
+    },
+    {
+        name: "Warm Tawny",
+        category: "vintage",
+        colors: ["#B97D56", "#C28D5E", "#9E7A4F", "#7F6140", "#6A4B34"]
+    },
+    {
+        name: "Golden Olive",
+        category: "vintage",
+        colors: ["#B7B65C", "#A49A4B", "#8C7F39", "#736630", "#4D4B27"]
+    },
+    {
+        name: "Ochre Yellow",
+        category: "vintage",
+        colors: ["#B68A2A", "#D29A33", "#E1B55D", "#7F5B2C", "#6A4722"]
+    },
+    {
+        name: "Peach Rose",
+        category: "vintage",
+        colors: ["#E6B7A9", "#D29F95", "#C88D80", "#B6765C", "#9E5B49"]
+    },
+    {
+        name: "Teal Dreams",
+        category: "vintage",
+        colors: ["#1C3F41", "#3A5A5C", "#4B7879", "#5D8A8A", "#6C9B9B"]
+    },
+    {
+        name: "Cocoa Brown",
+        category: "vintage",
+        colors: ["#4A362A", "#5C4330", "#4F3B2D", "#392B22", "#2C1F17"]
+    },
+    {
+        name: "Cinnamon Spice",
+        category: "vintage",
+        colors: ["#9C5A3C", "#B57C47", "#9A6F3F", "#7F5B34", "#6A4829"]
+    },
+    {
+        name: "Olive Grove",
+        category: "vintage",
+        colors: ["#6D7B47", "#607A3C", "#52612D", "#47532A", "#3A4625"]
+    },
+    {
+        name: "Moss Green",
+        category: "vintage",
+        colors: ["#6A7A4E", "#5F6D44", "#4A5C34", "#3A4D28", "#2C3F1E"]
+    },
+    {
+        name: "Burnt Amber",
+        category: "vintage",
+        colors: ["#7C3F1A", "#9E4D27", "#9C4C22", "#8C3E1C", "#7A3217"]
+    },
+    {
+        name: "Mauve Mist",
+        category: "vintage",
+        colors: ["#D1A1B2", "#C597A5", "#A87C91", "#7D6377", "#5F495F"]
+    },
+    {
+        name: "Sunset Bronze",
+        category: "vintage",
+        colors: ["#B97F57", "#9E6C46", "#8C5B36", "#7B4A28", "#6A3F1E"]
+    },
+    {
+        name: "Chalky Blue",
+        category: "vintage",
+        colors: ["#6C8D9D", "#5C7F8D", "#4F6F7C", "#3D5F6B", "#315157"]
+    },
+    {
+        name: "Dusty Lavender",
+        category: "vintage",
+        colors: ["#B49D9A", "#9F8782", "#8C726E", "#7F5E5A", "#5D4944"]
+    },
+    {
+        name: "Golden Honey",
+        category: "vintage",
+        colors: ["#C4A437", "#D09F2F", "#E0B341", "#A68124", "#8C6421"]
+    },
+    {
+        name: "Faded Turquoise",
+        category: "vintage",
+        colors: ["#4C8B8C", "#3C7071", "#2E5F5F", "#275C58", "#1F4A47"]
+    },
+    {
+        name: "Rustic Chestnut",
+        category: "vintage",
+        colors: ["#6F3E28", "#7C4B2D", "#8B4F34", "#9A5734", "#7D4A2A"]
+    },
+    {
+        name: "Clove Brown",
+        category: "vintage",
+        colors: ["#6E4E3B", "#7A563F", "#6F4F34", "#5F4530", "#513B28"]
+    },
+            {
+                name: "Neon Tokyo",
+                category: "neon",
+                colors: ["#FF0099", "#FF00CC", "#CC00FF", "#9900FF", "#6600FF"]
+            },
+            {
+                name: "Soft Morning",
+                category: "pastel",
+                colors: ["#E6B8B8", "#E6CCB8", "#E6E0B8", "#CCE6B8", "#B8E6CC"]
+            },
+            //pastel is here,
+            
+    {
+        name: "Soft Blossom",
+        category: "pastel",
+        colors: ["#FAD0C9", "#F7B7A3", "#F9D6A0", "#F4E1A1", "#C9E4D7"]
+    },
+    {
+        name: "Cotton Candy",
+        category: "pastel",
+        colors: ["#FFB3D9", "#FFCCE5", "#F2D6E1", "#D9C0C7", "#D3A9A1"]
+    },
+    {
+        name: "Pale Sunset",
+        category: "pastel",
+        colors: ["#F1D3D3", "#F5D0A9", "#F9C8A4", "#FFB5B5", "#D8E5F1"]
+    },
+    {
+        name: "Lavender Dream",
+        category: "pastel",
+        colors: ["#E3D0F9", "#D8A9F3", "#D4A0F3", "#BFA7E9", "#F1C6F3"]
+    },
+    {
+        name: "Minty Breeze",
+        category: "pastel",
+        colors: ["#A8E6CF", "#FF8C94", "#D4F8E8", "#E1F4E8", "#D5F5F5"]
+    },
+    {
+        name: "Peachy Glow",
+        category: "pastel",
+        colors: ["#F5C5A9", "#F7D1A3", "#FFB2A6", "#E8C0A9", "#E0E8D5"]
+    },
+    {
+        name: "Blueberry Bliss",
+        category: "pastel",
+        colors: ["#A7C7E7", "#D1E2F0", "#B8D9F5", "#90C7EA", "#BCC9F0"]
+    },
+    {
+        name: "Sugar Plum",
+        category: "pastel",
+        colors: ["#E5A9D6", "#D8A7C2", "#F1B2D8", "#F2A7D0", "#D3A1D2"]
+    },
+    {
+        name: "Morning Dew",
+        category: "pastel",
+        colors: ["#A8D9D3", "#B8E6E1", "#D1F3F2", "#B6D8E6", "#E0F4F5"]
+    },
+    {
+        name: "Cotton Clouds",
+        category: "pastel",
+        colors: ["#F5F1F6", "#C9C5D0", "#F1E9E9", "#D2D0D8", "#E9C4D7"]
+    },
+    {
+        name: "Soft Seashell",
+        category: "pastel",
+        colors: ["#F6C1B2", "#F3D2B2", "#E1B8A4", "#D6D4C5", "#E9E4D2"]
+    },
+    {
+        name: "Fresh Mint",
+        category: "pastel",
+        colors: ["#D6F6E5", "#C8E2D0", "#B1D7C4", "#A6F6D7", "#A7F5D7"]
+    },
+    {
+        name: "Lemon Sorbet",
+        category: "pastel",
+        colors: ["#F1F3B0", "#F5E9A6", "#F7E1B1", "#E4D692", "#D6CFC4"]
+    },
+    {
+        name: "Lilac Mist",
+        category: "pastel",
+        colors: ["#E0BBE4", "#D6AEDD", "#B9A4D3", "#F3D1F1", "#E5C5FF"]
+    },
+    {
+        name: "Peachy Pink",
+        category: "pastel",
+        colors: ["#FFBCB3", "#F2C6A0", "#F9D4C5", "#F7C5A7", "#D4BBA0"]
+    },
+    {
+        name: "Frosted Rose",
+        category: "pastel",
+        colors: ["#E3A7C9", "#F1C7D6", "#F7A3BC", "#F6B8C6", "#F1D3D9"]
+    },
+    {
+        name: "Minty Snow",
+        category: "pastel",
+        colors: ["#A8F2E6", "#B0F5DD", "#D4F5E8", "#B7E6E1", "#A6D9D3"]
+    },
+    {
+        name: "Vanilla Whip",
+        category: "pastel",
+        colors: ["#F8E1A1", "#E4D8B7", "#D6C7B0", "#E1D6A3", "#D7C7A2"]
+    },
+    {
+        name: "Tropical Ice",
+        category: "pastel",
+        colors: ["#A1C8E7", "#A2D9E1", "#A3F3E4", "#C4D5E5", "#B5E5D9"]
+    },
+    {
+        name: "Citrus Delight",
+        category: "pastel",
+        colors: ["#F2F1A1", "#F8D98A", "#F9E3A1", "#F4D75B", "#D5D8A4"]
+    },
+    {
+        name: "Candy Sprinkles",
+        category: "pastel",
+        colors: ["#F6D1D1", "#F7C4F1", "#F9B0E1", "#FFB9D1", "#FFD4D6"]
+    },
+    {
+        name: "Pale Aqua",
+        category: "pastel",
+        colors: ["#C4D7E3", "#A7C9D9", "#9CC2D1", "#C1D9E6", "#B6D5E2"]
+    },
+    {
+        name: "Baby Blue",
+        category: "pastel",
+        colors: ["#A1C6EA", "#C4D4FF", "#B2C9FB", "#B8D9F8", "#A9C1F1"]
+    },
+    {
+        name: "Blossom Breeze",
+        category: "pastel",
+        colors: ["#F7D3D2", "#F2D8D2", "#D6A9B0", "#D2A3B4", "#E1A8B2"]
+    },
+    {
+        name: "Lemonade Kiss",
+        category: "pastel",
+        colors: ["#FFE4A3", "#FFEC99", "#F7DA8D", "#F0D160", "#E2D24C"]
+    },
+    {
+        name: "Sugar Cookie",
+        category: "pastel",
+        colors: ["#F8E4D4", "#F3D2B0", "#E4C29A", "#F4E4B8", "#E8CBA7"]
+    },
+    {
+        name: "Pink Perfection",
+        category: "pastel",
+        colors: ["#E2B4B4", "#F2D1D1", "#F5B8B8", "#F2C4C4", "#F6D9D9"]
+    },
+    {
+        name: "Lavender Mint",
+        category: "pastel",
+        colors: ["#C6A4C7", "#E0C9E8", "#B8A9D9", "#E1A9D9", "#D3B2C7"]
+    },
+    {
+        name: "Creamy Peach",
+        category: "pastel",
+        colors: ["#FFEDD5", "#F9D8A4", "#F2C294", "#E2A6A0", "#D29A9D"]
+    },
+    {
+        name: "Snowy Dusk",
+        category: "pastel",
+        colors: ["#E0F0F6", "#C4D9E5", "#9BC4D8", "#7FB9D7", "#A4C9E3"]
+    },
+    {
+        name: "Spring Fling",
+        category: "pastel",
+        colors: ["#F9E6D7", "#F6D3A6", "#F0D1A5", "#F1C89F", "#F4D1A7"]
+    },
+    {
+        name: "Soft Sky",
+        category: "pastel",
+        colors: ["#D2E8F2", "#B2D6F2", "#A2C5E0", "#7FB8D9", "#B0C8F2"]
+    },
+    {
+        name: "Peach Fuzz",
+        category: "pastel",
+        colors: ["#FFCFB2", "#FFB382", "#FF7F57", "#F9A56D", "#D9A0B7"]
+    },
+    {
+        name: "Ocean Whispers",
+        category: "pastel",
+        colors: ["#D6EAF6", "#A9C9FF", "#8FB8F1", "#75A4F0", "#C4D8FB"]
+    },
+    {
+        name: "Whispering Mint",
+        category: "pastel",
+        colors: ["#D0F0C0", "#C5E3B3", "#A2D6A1", "#99D0A1", "#A4E2A6"]
+    },
+    {
+        name: "Peach Sorbet",
+        category: "pastel",
+        colors: ["#F8C6A3", "#F9C9A6", "#F9B99A", "#F7CBA2", "#F3D0A2"]
+    },
+    {
+        name: "Sugar Plum Fairy",
+        category: "pastel",
+        colors: ["#D7A4D0", "#E3C6E1", "#D2A9D9", "#E1C5DC", "#D9A7DC"]
+    },
+    {
+        name: "Delicate Rose",
+        category: "pastel",
+        colors: ["#F9D7D9", "#F1B8B9", "#F8D5D5", "#F2E3E1", "#E0D2D6"]
+    },
+    {
+        name: "Frosted Peach",
+        category: "pastel",
+        colors: ["#FFD1A3", "#FFDC89", "#F4C59A", "#F2B89C", "#F1A77D"]
+    },
+    {
+        name: "Lush Lavender",
+        category: "pastel",
+        colors: ["#D3A5D3", "#E1B3D1", "#F0C4E6", "#D7A2D8", "#E4A1D1"]
+    },
+    {
+        name: "Vanilla Frost",
+        category: "pastel",
+        colors: ["#F8F5E1", "#F6E6B2", "#E8D9B8", "#D5D4B9", "#C7D2A9"]
+    },
+    {
+        name: "Lilac Bliss",
+        category: "pastel",
+        colors: ["#C6A7D6", "#D1B1D9", "#D6B3E0", "#D9C4E9", "#E2D7F0"]
+    },
+    {
+        name: "Cherry Blossom",
+        category: "pastel",
+        colors: ["#F6D1D1", "#F9E0E0", "#F3D2C8", "#F8C9D9", "#F1D0C5"]
+    },
+    {
+        name: "Dreamy Day",
+        category: "pastel",
+        colors: ["#F6F1F1", "#F7D3F1", "#F1D9F1", "#F3D7F0", "#D0B8D9"]
+    },
+    {
+        name: "Golden Butter",
+        category: "pastel",
+        colors: ["#F9F2A6", "#F1E38F", "#F5F1A2", "#E5D783", "#D8D26A"]
+    },
+    {
+        name: "Pink Velvet",
+        category: "pastel",
+        colors: ["#F5A3C7", "#F1D2E5", "#D5A0D1", "#F3B7C7", "#E8A3C6"]
+    },
+    {
+        name: "Rose Gold",
+        category: "pastel",
+        colors: ["#F4C8A3", "#F1B69A", "#D5A295", "#F7D1C2", "#E2A8B0"]
+    },
+    {
+        name: "Candy Floss",
+        category: "pastel",
+        colors: ["#F1D1D1", "#F7B8B8", "#F1E3F1", "#E3D1E6", "#D8A8D7"]
+    },
+
+            {
+                name: "Twitter Brand",
+                category: "brand",
+                colors: ["#1DA1F2", "#14171A", "#657786", "#AAB8C2", "#E1E8ED"]
+            },
+
+            //brand is here 
+            
+    {
+        name: "Twitter",
+        category: "brand",
+        colors: ["#1DA1F2", "#14171A", "#657786", "#AAB8C2", "#E1E8ED"]
+    },
+    {
+        name: "Facebook",
+        category: "brand",
+        colors: ["#3B5998", "#8B9DC3", "#D8DFEA", "#F7F7F7", "#C5C6D0"]
+    },
+    {
+        name: "Instagram",
+        category: "brand",
+        colors: ["#F58529", "#DD2A7B", "#8134AF", "#515BD4", "#4C68D7"]
+    },
+    {
+        name: "Google",
+        category: "brand",
+        colors: ["#4285F4", "#34A853", "#FBBC05", "#EA4335", "#FFAA00"]
+    },
+    {
+        name: "Spotify",
+        category: "brand",
+        colors: ["#1DB954", "#191414", "#1ED760", "#A0A0A0", "#6A6A6A"]
+    },
+    {
+        name: "YouTube",
+        category: "brand",
+        colors: ["#FF0000", "#282828", "#A1A1A1", "#E1E1E1", "#CCCCCC"]
+    },
+    {
+        name: "Apple",
+        category: "brand",
+        colors: ["#A1B3C1", "#D1D3D1", "#4A4A4A", "#6C6C6C", "#FFFFFF"]
+    },
+    {
+        name: "Amazon",
+        category: "brand",
+        colors: ["#FF9900", "#232F3E", "#F2F3F3", "#EAEDED", "#4C4C4C"]
+    },
+    {
+        name: "Microsoft",
+        category: "brand",
+        colors: ["#F25022", "#7FBA00", "#00A4EF", "#FFB900", "#767676"]
+    },
+    {
+        name: "LinkedIn",
+        category: "brand",
+        colors: ["#0077B5", "#FFFFFF", "#86888A", "#D0D3D4", "#E1E9F1"]
+    },
+    {
+        name: "Reddit",
+        category: "brand",
+        colors: ["#FF4500", "#FFFFFF", "#ECE8E1", "#FFFFFF", "#232323"]
+    },
+    {
+        name: "Snapchat",
+        category: "brand",
+        colors: ["#FFFC00", "#FFB6D0", "#A4A4A4", "#000000", "#F7F7F7"]
+    },
+    {
+        name: "Pinterest",
+        category: "brand",
+        colors: ["#E60023", "#D8D8D8", "#8B8B8B", "#FFFFFF", "#9B9B9B"]
+    },
+    {
+        name: "TikTok",
+        category: "brand",
+        colors: ["#010101", "#00F2EA", "#FF0050", "#2A2A2A", "#FE2C55"]
+    },
+    {
+        name: "Netflix",
+        category: "brand",
+        colors: ["#E50914", "#221F1F", "#B3B3B3", "#666666", "#333333"]
+    },
+    {
+        name: "Uber",
+        category: "brand",
+        colors: ["#000000", "#FFFFFF", "#868686", "#B2B2B2", "#8A8A8A"]
+    },
+    {
+        name: "Slack",
+        category: "brand",
+        colors: ["#4A154B", "#36C5F0", "#2EB67D", "#EC3C57", "#E5A00D"]
+    },
+    {
+        name: "Airbnb",
+        category: "brand",
+        colors: ["#FF5A5F", "#FFB47A", "#00A699", "#484848", "#F7F7F7"]
+    },
+    {
+        name: "WhatsApp",
+        category: "brand",
+        colors: ["#25D366", "#128C7E", "#075E54", "#34B7F1", "#ECE5DD"]
+    },
+    {
+        name: "Dropbox",
+        category: "brand",
+        colors: ["#007EE5", "#0061F2", "#D9E3F0", "#D7DBE1", "#FFFFFF"]
+    },
+    {
+        name: "Spotify",
+        category: "brand",
+        colors: ["#1DB954", "#191414", "#1ED760", "#A0A0A0", "#6A6A6A"]
+    },
+    {
+        name: "Twitch",
+        category: "brand",
+        colors: ["#6441A5", "#9146FF", "#3E3E3E", "#F7F7F7", "#8C8C8C"]
+    },
+    {
+        name: "Coca-Cola",
+        category: "brand",
+        colors: ["#F40009", "#9B9B9B", "#FFFFFF", "#232F3E", "#D6D6D6"]
+    },
+    {
+        name: "Pepsi",
+        category: "brand",
+        colors: ["#004B87", "#0095D9", "#F1C40F", "#F7F7F7", "#2C3E50"]
+    },
+    {
+        name: "McDonald's",
+        category: "brand",
+        colors: ["#FFC72C", "#DA291C", "#6C6E6B", "#BCBCBC", "#D6D6D6"]
+    },
+    {
+        name: "Nike",
+        category: "brand",
+        colors: ["#111111", "#FFFFFF", "#A7A8AA", "#2A2A2A", "#D9D9D9"]
+    },
+    {
+        name: "Adidas",
+        category: "brand",
+        colors: ["#000000", "#FFFFFF", "#444444", "#DDDDDD", "#AAAAAA"]
+    },
+    {
+        name: "Starbucks",
+        category: "brand",
+        colors: ["#00704A", "#4E8C3E", "#B2B094", "#E7E5D9", "#3E302D"]
+    },
+    {
+        name: "Lego",
+        category: "brand",
+        colors: ["#FFDB00", "#D40000", "#FF9600", "#4E8F3A", "#393939"]
+    },
+    {
+        name: "H&M",
+        category: "brand",
+        colors: ["#2A2A2A", "#B1B1B1", "#FFFFFF", "#1C1C1C", "#D2D2D2"]
+    },
+    {
+        name: "Target",
+        category: "brand",
+        colors: ["#E4002B", "#A1B3C1", "#D9E0E6", "#F3F3F3", "#A1A1A1"]
+    },
+    {
+        name: "Walmart",
+        category: "brand",
+        colors: ["#0061F2", "#FF8C00", "#F2F2F2", "#434A52", "#F7F7F7"]
+    },
+    {
+        name: "Spotify",
+        category: "brand",
+        colors: ["#1DB954", "#191414", "#1ED760", "#A0A0A0", "#6A6A6A"]
+    },
+    {
+        name: "Spotify",
+        category: "brand",
+        colors: ["#1DB954", "#191414", "#1ED760", "#A0A0A0", "#6A6A6A"]
+    },
+    {
+        name: "Tesla",
+        category: "brand",
+        colors: ["#E82127", "#191919", "#5B5B5B", "#999999", "#C9C9C9"]
+    },
+    {
+        name: "Coca-Cola",
+        category: "brand",
+        colors: ["#F40009", "#9B9B9B", "#FFFFFF", "#232F3E", "#D6D6D6"]
+    },
+    {
+        name: "Samsung",
+        category: "brand",
+        colors: ["#1428A0", "#4E92D8", "#F1F1F1", "#5B5B5B", "#222222"]
+    },
+    {
+        name: "Audi",
+        category: "brand",
+        colors: ["#1C1C1C", "#D1D3D4", "#F4F4F4", "#8A8D8F", "#56595C"]
+    },
+    {
+        name: "BMW",
+        category: "brand",
+        colors: ["#1F3A51", "#F1F1F1", "#A7A9B3", "#F0F0F0", "#3C3E43"]
+    },
+    {
+        name: "Vans",
+        category: "brand",
+        colors: ["#F72C3B", "#1F1F1F", "#F2F2F2", "#B5B5B5", "#D6D6D6"]
+    },
+    {
+        name: "KFC",
+        category: "brand",
+        colors: ["#F40009", "#F7F7F7", "#6D1A1A", "#6E2D2B", "#D7D7D7"]
+    },
+    {
+        name: "Toyota",
+        category: "brand",
+        colors: ["#E60012", "#000000", "#A9A9A9", "#F1F1F1", "#D1D1D1"]
+    },
+    {
+        name: "Honda",
+        category: "brand",
+        colors: ["#B3B3B3", "#9A9A9A", "#F2F2F2", "#9D9D9D", "#2B2B2B"]
+    }
+,
+            // Add more themed palettes...
+            {
+                name: "Desert Night",
+                category: "nature",
+                colors: ["#1A1B25", "#292B3D", "#3D4064", "#6B71A4", "#8D93C7"]
+            },
+            {
+                name: "Coral Reef",
+                category: "nature",
+                colors: ["#FF7F50", "#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4"]
             }
+            ,
+            
+    {
+        name: "Winter Shadows",
+        category: "winter",
+        colors: ["#4C4F5E", "#6E7281", "#A1A4B2", "#D1D2DC", "#EDEFF3"]
+    },
+    {
+        name: "Frosty Blues",
+        category: "winter",
+        colors: ["#001F3F", "#004080", "#005A99", "#0073CC", "#0099FF"]
+    },
+    {
+        name: "Silver Frost",
+        category: "winter",
+        colors: ["#B0C4DE", "#A9A9A9", "#D3D3D3", "#C0C0C0", "#F0F8FF"]
+    },
+    {
+        name: "Winter Solstice",
+        category: "winter",
+        colors: ["#2F4F4F", "#556B2F", "#708090", "#B0C4DE", "#778899"]
+    },
+    {
+        name: "Pale Winter",
+        category: "winter",
+        colors: ["#D6EAF8", "#F0F8FF", "#D3D3D3", "#BCC6CC", "#C4E17F"]
+    },
+    {
+        name: "Northern Lights",
+        category: "winter",
+        colors: ["#003366", "#005B99", "#0080FF", "#99CCFF", "#CCE5FF"]
+    },
+    {
+        name: "Snowfall",
+        category: "winter",
+        colors: ["#E1E8FC", "#DFE7FD", "#D1E4FD", "#A9C4DE", "#A2B8DE"]
+    },
+    {
+        name: "Ice Cap",
+        category: "winter",
+        colors: ["#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A"]
+    },
+    {
+        name: "Winter Breeze",
+        category: "winter",
+        colors: ["#E6F0F4", "#D1E6E0", "#A4D7D1", "#69C0A9", "#34B899"]
+    },
+    {
+        name: "Frozen Dawn",
+        category: "winter",
+        colors: ["#A3A7A9", "#B5BCC2", "#D3D8DC", "#E0E7ED", "#E4F0F4"]
+    },
+    {
+        name: "Crystal Snow",
+        category: "winter",
+        colors: ["#E7EFFF", "#D1E9FF", "#A2D8FF", "#7BB8FF", "#3D92FF"]
+    },
+    {
+        name: "Glacial Blue",
+        category: "winter",
+        colors: ["#5B97D1", "#80B1D2", "#A8C6E2", "#B8D8F0", "#D4E8FB"]
+    },
+    {
+        name: "Polar Night",
+        category: "winter",
+        colors: ["#333C48", "#4A5568", "#687D92", "#A0AABF", "#C9D0DB"]
+    },
+    {
+        name: "Alpine Winter",
+        category: "winter",
+        colors: ["#3A5C72", "#2E4F61", "#4A7A7A", "#A0B9B7", "#D5E0E4"]
+    },
+    {
+        name: "Icy Landscape",
+        category: "winter",
+        colors: ["#9ED0D7", "#74B8BF", "#4B99A8", "#2D7F91", "#1A5D7F"]
+    },
+    {
+        name: "Midnight Frost",
+        category: "winter",
+        colors: ["#001D3D", "#002F5D", "#003F7A", "#005B99", "#0078B2"]
+    },
+    {
+        name: "Snowy Night",
+        category: "winter",
+        colors: ["#3B4F5B", "#5A6D7A", "#8D99A9", "#B2BCC4", "#F2F4F9"]
+    },
+    {
+        name: "Winter Dawn",
+        category: "winter",
+        colors: ["#D9E2E9", "#BCC6D0", "#A5B0B6", "#7D8F94", "#4F6166"]
+    },
+    {
+        name: "Frozen Lake",
+        category: "winter",
+        colors: ["#54879C", "#7DA7B9", "#A0C0D2", "#B1D7E4", "#D0E8F5"]
+    },
+    {
+        name: "Blue Ice",
+        category: "winter",
+        colors: ["#4D8FAC", "#6F9BB3", "#A1C3D6", "#C4D9E9", "#E1F1F6"]
+    },
+    {
+        name: "Chilly Nights",
+        category: "winter",
+        colors: ["#2D3A3D", "#4C5D64", "#7C8A8D", "#A8C0C7", "#D1DDE2"]
+    },
+    {
+        name: "Snowdrift",
+        category: "winter",
+        colors: ["#C2E5FF", "#A1D8FF", "#79C1FF", "#57A6FF", "#2F87FF"]
+    },
+    {
+        name: "Iceberg",
+        category: "winter",
+        colors: ["#B9D8F4", "#9AC4E5", "#7FADD9", "#6496CD", "#4F7FB9"]
+    },
+    {
+        name: "Winter Twilight",
+        category: "winter",
+        colors: ["#4F6D7A", "#5F7D8C", "#6D8A9D", "#7B97AF", "#A4B5C1"]
+    },
+    {
+        name: "Blizzard",
+        category: "winter",
+        colors: ["#D9E0E9", "#A6B8C5", "#748B9B", "#3C6070", "#213B50"]
+    },
+    {
+        name: "Snowfall Night",
+        category: "winter",
+        colors: ["#44526D", "#5F748C", "#6F8DA6", "#89AFC0", "#A5C9D2"]
+    },
+    {
+        name: "Arctic Winds",
+        category: "winter",
+        colors: ["#B8C6CC", "#A1B8C2", "#8AAEB2", "#7B9EA2", "#4F7583"]
+    },
+    {
+        name: "Frosted Pines",
+        category: "winter",
+        colors: ["#4D5F62", "#5F7173", "#738E91", "#88A7B1", "#A1B6C7"]
+    },
+    {
+        name: "Subzero",
+        category: "winter",
+        colors: ["#9FBAF1", "#7F9FCC", "#5F8AB5", "#3E6C99", "#2D4F7C"]
+    },
+    {
+        name: "Winter Breeze",
+        category: "winter",
+        colors: ["#F0F4F8", "#D7E3EF", "#A6C2D6", "#7890B4", "#4E7B96"]
+    },
+    {
+        name: "Icy Peak",
+        category: "winter",
+        colors: ["#B9D0D6", "#A1C3D5", "#7F9CB9", "#68879C", "#4A5F80"]
+    },
+    {
+        name: "Frosted Azure",
+        category: "winter",
+        colors: ["#80C4D1", "#A1D1E2", "#C4E2F4", "#D7F2F8", "#E5F9FC"]
+    },
+    {
+        name: "Polar Glow",
+        category: "winter",
+        colors: ["#B0E4F1", "#99D4E0", "#7FB3D0", "#5C8AB0", "#466B90"]
+    },
+    {
+        name: "Winter Moon",
+        category: "winter",
+        colors: ["#D1D9E1", "#B0B8C0", "#97A1B1", "#7E8A9C", "#6B7F8C"]
+    },
+    {
+        name: "Winter Falls",
+        category: "winter",
+        colors: ["#C4D9E9", "#A3C1D8", "#8AA9C7", "#6F91B6", "#4F7A9A"]
+    },
+    {
+        name: "Frozen Horizon",
+        category: "winter",
+        colors: ["#BCCFE1", "#A7C0D5", "#8AA1C8", "#6D89B9", "#4F6F99"]
+    },
+    {
+        name: "Winter Sparkle",
+        category: "winter",
+        colors: ["#9DD3D7", "#7BB2B6", "#649CA4", "#4C7A8C", "#355F73"]
+    },
+    {
+        name: "Chilled Skies",
+        category: "winter",
+        colors: ["#A8D1E4", "#7BB8D6", "#5F9BC8", "#4185A9", "#2F6D8C"]
+    },
+    {
+        name: "Glacial Silence",
+        category: "winter",
+        colors: ["#D9EAF0", "#B6D7E3", "#95C3D6", "#73AFC8", "#5398A7"]
+    },
+    {
+        name: "Iced Mountain",
+        category: "winter",
+        colors: ["#B5C8D4", "#A3BCC9", "#87A9BC", "#6A8DAF", "#4A6F96"]
+    },
+    {
+        name: "Snowy Peak",
+        category: "winter",
+        colors: ["#A8BCC7", "#8A99B1", "#6C7D9B", "#4F6487", "#3D4F6A"]
+    },
+    {
+        name: "Tundra",
+        category: "winter",
+        colors: ["#8DA7B3", "#6D8C9F", "#4E6D8A", "#3A4D66", "#293E52"]
+    },
+    {
+        name: "Frosty Winds",
+        category: "winter",
+        colors: ["#A4C6D3", "#8FB9CA", "#7AAEC0", "#669BB7", "#4D88A1"]
+    },
+    {
+        name: "Frozen Beauty",
+        category: "winter",
+        colors: ["#B6D5E0", "#A2C8D2", "#88B5C5", "#709DB8", "#567F9C"]
+    },
+    {
+        name: "Chill Essence",
+        category: "winter",
+        colors: ["#C9DCE8", "#A8C3D7", "#87A9C5", "#6F8DA3", "#4F6F7F"]
+    },
+    {
+        name: "Winter Mirage",
+        category: "winter",
+        colors: ["#88D0E9", "#73A9D4", "#5C8BBF", "#3E6F9C", "#2A5779"]
+    },
+    {
+        name: "Blue Chill",
+        category: "winter",
+        colors: ["#A1C9E3", "#8BB9D8", "#72A6CC", "#598DBF", "#4177A5"]
+    },
+    {
+        name: "Ice Crystal",
+        category: "winter",
+        colors: ["#B0C9D4", "#A1B8C5", "#8AA7B6", "#7497A7", "#5F7F98"]
+    },
+    {
+        name: "Winter's Edge",
+        category: "winter",
+        colors: ["#B0B8C3", "#A1AEB4", "#8D99A6", "#7A8A98", "#667588"]
+    },
+    {
+        name: "Icy Shine",
+        category: "winter",
+        colors: ["#A0D1E8", "#7AC6D9", "#58A8C7", "#358EAF", "#1D74A0"]
+    },
+    {
+        name: "Polar Lights",
+        category: "winter",
+        colors: ["#D2E8F1", "#A9C8D6", "#7DB0BC", "#66A0B2", "#4F8B99"]
+    }
+
+
+            // ... Continue with more palettes ...
         ];
 
         function createPaletteElement(palette) {
@@ -357,6 +1980,15 @@
                     document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
                     e.target.classList.add('active');
                     filterPalettes(e.target.dataset.category);
+                });
+            });
+
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                    document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+                    document.getElementById(e.target.dataset.section).classList.add('active');
                 });
             });
         });
